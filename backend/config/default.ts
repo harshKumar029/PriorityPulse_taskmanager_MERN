@@ -1,6 +1,12 @@
-export default{
-    port: 5000,
-    host: 'localhost',
-    mongodburl:"mongodb+srv://fastfood:fastfood123@cluster0.cpbc4ky.mongodb.net/todo?retryWrites=true&w=majority",
-    saltWorkFactor: 10,
-}
+require('dotenv').config();
+const mongodburl = process.env.mongodburl
+const port = process.env.port;
+const host = process.env.host;
+const saltWorkFactor = process.env.saltWorkFactor;
+
+module.exports = {
+    mongodburl,
+    port,
+    host,
+    saltWorkFactor
+};

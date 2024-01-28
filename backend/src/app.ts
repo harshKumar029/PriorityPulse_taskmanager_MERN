@@ -26,17 +26,13 @@ app.use((req, res, next) => {
 
 app.use(express.urlencoded({extended:false}));
 
-// Mount the auth routes
+// mounting all routes
 app.use('/api/auth', userRoutes);
 app.use('/api/todos', todoRoutes );
 
-import { Request, Response } from 'express';
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello World!');
-  });
 app.listen(port,host,()=>{
  logger.info(`server listen at http//${host}:${port}`);
- console.log({ message: 'Test API is working!' })
+
  connect();
 //  routes(app);
 })
