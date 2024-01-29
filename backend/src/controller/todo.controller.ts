@@ -14,18 +14,17 @@ export const getAllTodos = async (req: Request, res: Response): Promise<void> =>
 
 // create to-do
 export const createTodo = async (req: Request, res: Response): Promise<void> => {
+
     try {
         const { title, description, date } = req.body;
-        
-        // Parse the date string into a Date object
-        const [day, month, year] = date.split('/');
-        const parsedDate = new Date(`${year}-${month}-${day}`);
-        console.log(parsedDate)
+        const [year, month, day] = date.split('-');
+        const parsedDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
 
         const todo: Todo = new TodoModel({ title, description, date: parsedDate });
         await todo.save();
         res.status(201).json(todo);
     } catch (error) {
+        console.error('Error creating todo:');
         res.status(500).json({ error: 'Internal Server Error facing problem while creating user' });
     }
 };
