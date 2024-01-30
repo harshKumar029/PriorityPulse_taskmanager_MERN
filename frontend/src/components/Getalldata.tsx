@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Todo } from '../types'; // Import the Todo type
-import { getAllTodos } from '../../utility/apiService'; // Import the getAllTodos API function
+import { Todo } from '../pages/types'; // Import the Todo type
+import { getAllTodos } from '../utility/apiService'; 
 
 const GetAllTodos: React.FC = () => {
   // State to store todo data
@@ -26,11 +26,15 @@ const GetAllTodos: React.FC = () => {
     <div>
       <h2>All Todos</h2>
       <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            <strong>Title:</strong> {todo.title} | <strong>Description:</strong> {todo.description}
-          </li>
-        ))}
+      { todos.length>0? (
+      <li key={todos[0].id}>
+        <strong>Title:</strong> {todos[0].title} | <strong>Description:</strong> {todos[0].description}
+        | <strong>Date:</strong> {new Date(todos[0].date).toLocaleDateString()}
+      </li>
+    )
+    :<li>no data</li>
+
+   }
       </ul>
     </div>
   );

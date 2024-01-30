@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Todo } from '../types'; // Import the Todo type
-import { createTodo } from '../../utility/apiService'; // Import the createTodo API function
+import { Todo } from '../pages/types'; // Import the Todo type
+import { createTodo } from '../utility/apiService'; // Import the createTodo API function
 
 const CreateTodo: React.FC = () => {
   const [title, setTitle] = useState<string>('');

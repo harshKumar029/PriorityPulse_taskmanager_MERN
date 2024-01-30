@@ -4,10 +4,15 @@ import TodoModel, { Todo } from '../model/todo_model';
 
 export const getAllTodos = async (req: Request, res: Response): Promise<void> => {
     try {
-        const todos: Todo[] = await TodoModel.find();
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Set hours to 00:00:00:000 for accurate comparison
+
+        // Find todos from today's date in descending order of date
+        const todos: Todo[] = await TodoModel.find({ date: { $gte: today } }).sort({ date: +1 });
+
         res.status(200).json(todos);
     } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error ' });
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 };
 
