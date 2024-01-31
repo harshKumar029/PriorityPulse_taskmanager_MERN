@@ -63,24 +63,7 @@ export const CompletedTodo = async (req: Request, res: Response) => {
     }
 };
 
-// create controller for 7 different date in descending order
 
-// get Incomplete To-do Sorted By Date
-
-// export const IncompleteTodo = async (req: Request, res: Response) => {
-//     try {
-//         // Query the database for incomplete todos sorted by date in descending order
-//         const incompleteTodos: Todo[] = await TodoModel.find({ completed: false })
-//             .sort({ date: -1 })
-//             .exec();
-
-//         res.json(incompleteTodos);
-//     } catch (error) {
-//         // Handle errors
-//         console.error('Error retrieving incomplete todos:', error);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// };
 export const IncompleteTodo = async (req: Request, res: Response) => {
     try {
         //save today date and pass to mongo db for filter
@@ -103,6 +86,7 @@ export const IncompleteTodo = async (req: Request, res: Response) => {
 export async function markComplete (req: Request, res: Response) {
     // pass to do id from frontend
     const todoId = req.params.id;
+    console.log("todoId",todoId)
   
     try {
       // Finding the todo by ID in mongo db

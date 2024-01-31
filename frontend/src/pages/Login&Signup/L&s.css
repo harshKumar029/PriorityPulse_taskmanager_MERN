@@ -1,0 +1,63 @@
+.loginsignup form h2{
+    color: white;
+    letter-spacing: .9px;
+    font-weight: 600;
+    
+}
+.formcontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* float: right; */
+    justify-content: center;
+    height: 80vh;
+  }
+.loginsignup {
+    background-image: url('../../assets/img/loginbg.webp'); /* Change the path to your image file */
+    background-size: cover; /* Adjust as needed */
+    background-position: center; /* Adjust as needed */
+    background-repeat: no-repeat; /* Adjust as needed */
+     /* Add padding to ensure content is visible */
+    text-align: center; /* Center text content within the form container */
+  }
+   .loginsignup input {
+    width: 300px;
+    border: 1px solid rgb(73, 73, 73);
+    border-radius: 4px;
+    height: 30px;
+    margin: 8px 0px;
+    background-color: #1a1a1a;
+    color: rgb(187, 186, 186);
+  }
+  .loginsignup form textarea,.loginsignup
+  form select {
+    background-color: #2e1010;
+  }
+  .formcontainer {
+    margin: auto;
+    padding: 25px 0px;
+    background: #000000af;
+  }
+  .accbutton button {
+    background-color: #36609F; 
+    color: white;
+    padding: 6px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin-right: 10px;
+}
+  
+  /* Optional: Hover effect */
+  .accbutton button:hover {
+    background-color: #2e4b76;
+  }
+  .accbutton a{
+    color: rgb(246, 246, 246);
+    text-decoration: none;
+    margin-left: 5px;
+    font-size: 1.1rem;
+  }
+  
+  

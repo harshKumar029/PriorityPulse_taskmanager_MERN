@@ -32,7 +32,7 @@ export const login = async (req: Request, res: Response) => {
     }
     const token = jwt.sign({ userId: user._id }, secret_key, { expiresIn: '1h' });
     const name=user.name
-    res.json({ success: true,token:token, name});
+    res.json({ success: true,token:token,name: name,email:email});
   } catch (error: any) {
     res.status(500).json({ error: error.message });
   }

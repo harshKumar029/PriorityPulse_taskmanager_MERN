@@ -1,0 +1,54 @@
+.taskpage {
+    max-width: 80%;
+    margin: auto;
+    margin-top: 30px;
+    color: white;
+}
+
+.taskbutton {
+    text-align: center;
+}
+
+.tasktital {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.taskdiscription {
+    display: flex;
+    justify-content: space-between;
+}
+
+.taskdiscription img {
+    cursor: pointer;
+}
+
+.taskbutton button {
+    padding: 6px 36px;
+    border: none;
+    cursor: pointer;
+    background-color: #36609fcb;
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+
+@media (max-width: 705px) {
+    .taskbutton button {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+        margin-left: 15px;
+        border-radius: 5px;
+    }
+
+}
+
+@media (max-width: 460px) {
+    .taskbutton button {
+        margin-top: 10px;
+    }
+}

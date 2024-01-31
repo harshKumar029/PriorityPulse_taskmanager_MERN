@@ -1,6 +1,7 @@
 // Login.tsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import './L&s.css'
 import { login } from '../../utility/apiService'; // Adjust the path as per your project structure
 import Navbar from '../../components/Navbar';
 
@@ -8,23 +9,25 @@ const Login: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    let navigate=useNavigate();
-    
+    let navigate = useNavigate();
+
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
             // Call the login function from the API service
             const response = await login({ email: username, password: password });
-            console.log("resposnse data ",response)
+            console.log("resposnse data ", response)
 
             // Check if the login was successful
             if (response.success) {
-                localStorage.setItem("name",response.name);
+                localStorage.setItem("name", response.name);
                 localStorage.setItem("Token", response.token);
-                console.log(localStorage.getItem("Token"));
+                localStorage.setItem("email",response.email);
                 navigate("/");
-                // console.log(localStorage.getItem("name"));
-                // Redirect the user to the dashboard or other authenticated page
+                if (!response.success) {
+                    alert("Enter valid credentials")
+                }
+
             } else {
                 // Handle unsuccessful login
                 console.log('Login unsuccessful:', response.message);
@@ -35,29 +38,34 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div>
+        <div className='loginsignup'>
             <Navbar />
-            <h2>Login</h2>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="username">Username:</label>
-                    <input
-                        type="text"
-                        id="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
+                <div className="formcontainer">
+                    <h2>Access Your Account</h2>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            id="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder="Enter your email" required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Enter your password" required
+                        />
+                    </div>
+                    <div className='accbutton'>
+                        <button type="submit">Log In</button>
+                        <Link to='/createuser' className="login" >i'm a new user.</Link>
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <button type="submit">Login</button>
             </form>
         </div>
     );

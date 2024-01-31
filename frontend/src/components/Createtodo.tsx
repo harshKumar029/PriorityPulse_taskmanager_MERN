@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Todo } from '../pages/types'; // Import the Todo type
 import { createTodo } from '../utility/apiService'; // Import the createTodo API function
 
-const CreateTodo: React.FC = () => {
+interface CreateTodoProps {
+  onDataUpdated: () => void; // Define onDataUpdated prop
+}
+
+const CreateTodo: React.FC <CreateTodoProps>= ({ onDataUpdated }) => {
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [dateInput, setDateInput] = useState<string>('');
@@ -15,7 +19,7 @@ const CreateTodo: React.FC = () => {
 
     // Create a todo object with the form data, including the parsed date
     const todoData: Todo = {
-        id:10,
+      id: 10,
       title,
       description,
       completed: false,
@@ -26,8 +30,8 @@ const CreateTodo: React.FC = () => {
       // Call the createTodo API function with the todoData
       const response = await createTodo(todoData);
       console.log('Todo created:', response);
-      
-      // Clear the form fields after successful creation
+      onDataUpdated();
+      alert("Task created")
       setTitle('');
       setDescription('');
       setDateInput('');
@@ -37,22 +41,32 @@ const CreateTodo: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Create Todo</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title:</label>
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-        </div>
-        <div>
-          <label>Description:</label>
-          <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
-        </div>
-        <div>
-          <label>Date:</label>
-          <input type="date" value={dateInput} onChange={(e) => setDateInput(e.target.value)} />
-        </div>
-        <button type="submit">Create Todo</button>
+    <div className='createtodoform'>
+      <form className='createform' onSubmit={handleSubmit}>
+        <section className='createsection1'>
+          <div>
+            <label>Title</label>
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+          </div>
+          <div>
+            <label>End date</label>
+            <input type="date" value={dateInput} onChange={(e) => setDateInput(e.target.value)} />
+          </div>
+        </section>
+        <section className='createsection2'>
+          <div>
+          <label>Description</label>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            rows={4}
+            cols={50} 
+          />
+          </div>
+          <section className='createtodobutton'>
+            <button type="submit">Create Task</button>
+          </section>
+        </section>
       </form>
     </div>
   );

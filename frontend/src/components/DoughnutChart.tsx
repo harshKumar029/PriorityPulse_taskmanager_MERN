@@ -2,12 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Chart, registerables } from 'chart.js';
 import { PastWeek } from '../utility/apiService';
 
-const DoughnutChart: React.FC = () => {
+interface DoughnutChartProps {
+    isDataUpdated: boolean;
+}
+
+const DoughnutChart: React.FC<DoughnutChartProps> = ({ isDataUpdated }) => {
     const chartRef = useRef<HTMLCanvasElement>(null);
     const chartInstance = useRef<Chart<"doughnut", number[], string> | null>(null);
     const [trueCount, setTrueCount] = useState<any>(0);
     const [FalseCount, setFalseCount] = useState<any>(0);
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -42,12 +45,11 @@ const DoughnutChart: React.FC = () => {
                         chartInstance.current = new Chart(ctx, {
                             type: 'doughnut',
                             data: {
-                                // labels: ['True', 'False'],
                                 datasets: [{
                                     data: [counts.true, counts.false],
                                     backgroundColor: [
                                         'rgba(54, 162, 235, 0.2)',
-                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(255, 99, 132, 0.5)',
                                     ],
                                     borderColor: [
                                         'rgba(54, 162, 235, 1)',
@@ -62,12 +64,7 @@ const DoughnutChart: React.FC = () => {
                                 cutout: '70%',
                                 plugins: {
                                     title: {
-                                        display: true,
-                                        text: 'Past Week Data', // Chart title
-                                        font: {
-                                            size: 16,
-                                            weight: 'bold',
-                                        },
+                                        display: false,
                                     },
                                 },
                             },
@@ -80,32 +77,33 @@ const DoughnutChart: React.FC = () => {
         };
 
         fetchData();
-
         return () => {
             if (chartInstance.current) {
                 chartInstance.current.destroy();
             }
         };
-    }, []);
-
+    }, [isDataUpdated]); // Add isDataUpdated to the dependency array
     return (
-        <div style={{ width: 208, height: 190, backgroundColor: 'none', }}>
-            <canvas ref={chartRef} />
-            <section>
-                <h1>Good going!</h1>
-                <p>You are almost there to complete<br /> your task, keep going </p>
-                <div>
-                    <section>
-                        <span></span>
-                        <p>{trueCount} Completed</p>
-                    </section>
-                    <section>
-                        <span></span>
-                        <p>{FalseCount} On Going</p>
-                    </section>
-
-                </div>
-            </section>
+        <div className='donchart'>
+            <div className='wrapper'>
+                <section className='donchartcanva'>
+                    <canvas ref={chartRef} />
+                </section>
+                <section>
+                    <h1>Good going!</h1>
+                    <p>You are almost there to complete<br /> your task, keep going </p>
+                    <div>
+                        <section>
+                            <span></span>
+                            <p>{trueCount} Completed</p>
+                        </section>
+                        <section>
+                            <span></span>
+                            <p>{FalseCount} On Going</p>
+                        </section>
+                    </div>
+                </section>
+            </div>
         </div>
     )
 };

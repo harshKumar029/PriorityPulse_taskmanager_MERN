@@ -11,12 +11,13 @@ const Navbar = () => {
     }
     return (
         <>
-            <div>
-                <Link to="/">
+        <div className='navwrapper'>
+            <div className='navbar'>
+                <Link className='logo' to="/">
                     <h4>TO-DO LIST</h4>
                 </Link>
-                <p>Good evening{ localStorage.getItem("name")}</p>
-                <div>
+                <p>Hello ! { localStorage.getItem("name")}</p>
+                <div className='auth-buttons'>
                     {(!localStorage.getItem("Token")) ?
                         <>
                             <Link to="/login">
@@ -34,6 +35,7 @@ const Navbar = () => {
                     {/* {console.log(localStorage.getItem("token"))} */}
                 </div>
             </div >
+            </div>
         </>
     )
 }
