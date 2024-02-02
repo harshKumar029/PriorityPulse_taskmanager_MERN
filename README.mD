@@ -1,7 +1,7 @@
 # Todo Task Manager
 Todo Task Manager is a simple task management application that allows users to create, update, and delete tasks. It's built with a React 
 
-front-end and an Express and nodejs back-end, with MongoDB as the database.
+and typscript as front-end and an Express and nodejs back-end, with MongoDB as the database.
 
 ![UIimage](./frontend/src/assets/img/readmeimg.png)
 
