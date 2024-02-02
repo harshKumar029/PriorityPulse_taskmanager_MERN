@@ -11,7 +11,11 @@ const GetAllTodos: React.FC = () => {
     const fetchTodos = async () => {
       try {
         const response = await getAllTodos();
+        const todoDate = new Date(response[0].date).toLocaleDateString();
+        const todayDate = new Date().toLocaleDateString();
+        if(todoDate == todayDate){
         setTodos(response);
+        }
       } catch (error) {
         console.error('Error fetching todos:', error);
       }

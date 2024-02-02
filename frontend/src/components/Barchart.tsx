@@ -14,7 +14,6 @@ const BarChart: React.FC<BarChartProps> = ({ isDataUpdated }) => {
     const fetchData = async () => {
       try {
         const response = await PastWeek();
-        console.log('Past Week Data:', response);
         const countsByDate: Record<string, { true: number; false: number }> = {};
         response.forEach((item: any) => {
           const date = new Date(item.date);

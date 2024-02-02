@@ -9,7 +9,6 @@ import './home.css'
 const Home = () => {
 
     const [isDataUpdated, setIsDataUpdated] = useState(false);
-    console.log ("state in home",isDataUpdated,)
     return (
         <>
             <Navbar />
