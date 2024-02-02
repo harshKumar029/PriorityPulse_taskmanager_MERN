@@ -3,6 +3,8 @@ Todo Task Manager is a simple task management application that allows users to c
 
 front-end and an Express and nodejs back-end, with MongoDB as the database.
 
+![UIimage](./frontend/src/assets/img/readmeimg.png)
+
 ## Features
 
 User Authentication: Users can sign up and log in to manage their tasks securely.     ---- Under construction
