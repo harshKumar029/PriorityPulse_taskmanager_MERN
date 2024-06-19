@@ -11,6 +11,7 @@ const GetAllTodos: React.FC = () => {
     const fetchTodos = async () => {
       try {
         const response = await getAllTodos();
+        console.log(response);
         const todoDate = new Date(response[0].date).toLocaleDateString();
         const todayDate = new Date().toLocaleDateString();
         if(todoDate == todayDate){
@@ -23,10 +24,6 @@ const GetAllTodos: React.FC = () => {
 
     fetchTodos();
   }, []);
-
-  // todos.map((data: any) => {
-  //   console.log("hjabfbabfbba",data);
-  // });
 
   return (
     <div className='todaystodo'>

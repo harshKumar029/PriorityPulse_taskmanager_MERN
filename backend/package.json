@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --config nodemon.json src/app.ts"
+    "dev": "nodemon --config nodemon.json src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js" 
   },
   "author": "",
   "license": "ISC",
@@ -30,6 +32,7 @@
     "config": "^3.3.10",
     "cors": "^2.8.5",
     "dayjs": "^1.11.10",
+    "dotenv": "^16.4.5",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",

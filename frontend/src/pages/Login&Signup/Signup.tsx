@@ -23,7 +23,7 @@ const Signup: React.FC = () => {
         }
       } else {
         // Handle unsuccessful signup
-        console.log('Signup unsuccessful:', response.message);
+        console.log( response.message);
       }
     } catch (error) {
       console.error('Error while signup:', error);

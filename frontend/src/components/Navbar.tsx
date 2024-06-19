@@ -20,12 +20,12 @@ const Navbar = () => {
                 <div className='auth-buttons'>
                     {(!localStorage.getItem("Token")) ?
                         <>
-                            <Link to="/login">
+                            {/* <Link to="/login"> */}
                                 <button className='butt1'>Login</button>
-                            </Link>
-                            <Link to="/createuser">
+                            {/* </Link> */}
+                            {/* <Link to="/createuser"> */}
                                 <button className='butt2'>Signup</button>
-                            </Link>
+                            {/* </Link> */}
                         </>
 
                         : <Link to="/login" onClick={handellogout}>
